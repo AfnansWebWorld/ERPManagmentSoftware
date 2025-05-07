@@ -1,0 +1,24 @@
+﻿@model ManagementSoftware.Models.Recipe
+@{
+    ViewData["Title"] = "Create Recipe";
+}
+
+<div class="container mt-4">
+    <h2>Create Recipe</h2>
+    <form asp-action="RecipeCreate" method="post">
+        <div class="mb-3">
+            <label asp-for="ProductName" class="form-label"></label>
+            <input asp-for="ProductName" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Ingredient" class="form-label"></label>
+            <input asp-for="Ingredient" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Quantity" class="form-label"></label>
+            <input asp-for="Quantity" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-success">Save</button>
+        <a asp-action="RecipeIndex" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

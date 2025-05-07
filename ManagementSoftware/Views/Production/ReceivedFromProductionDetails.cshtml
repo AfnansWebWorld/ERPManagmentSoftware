@@ -1,0 +1,24 @@
+﻿@model ManagementSoftware.Models.ReceivedFromProduction
+@{
+    ViewData["Title"] = "Received From Production Details";
+}
+
+<div class="container-fluid px-4">
+    <h2 class="mt-4">Received From Production Details</h2>
+    <div class="card">
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Product Name</dt>
+                <dd class="col-sm-9">@Model.ProductName</dd>
+
+                <dt class="col-sm-3">Quantity</dt>
+                <dd class="col-sm-9">@Model.Quantity</dd>
+
+                <dt class="col-sm-3">Received Date</dt>
+                <dd class="col-sm-9">@Model.ReceivedDate.ToShortDateString()</dd>
+            </dl>
+            <a asp-action="ReceivedFromProductionEdit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+            <a asp-action="ReceivedFromProduction" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+</div>

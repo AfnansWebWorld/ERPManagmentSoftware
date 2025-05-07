@@ -1,0 +1,30 @@
+﻿@model IEnumerable<ManagementSoftware.Models.AgingReport>
+@{
+    ViewData["Title"] = "Aging Reports";
+}
+<h2>@ViewData["Title"]</h2>
+<a class="btn btn-primary mb-3" asp-action="CreateAgingReport">Create New Report</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Client</th>
+            <th>Outstanding Amount</th>
+            <th>Days Due</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ClientName</td>
+                <td>@item.OutstandingAmount</td>
+                <td>@item.DaysDue</td>
+                <td>
+                    <a class="btn btn-info btn-sm" asp-action="EditAgingReport" asp-route-id="@item.Id">Edit</a>
+                    <a class="btn btn-danger btn-sm" asp-action="DeleteAgingReport" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

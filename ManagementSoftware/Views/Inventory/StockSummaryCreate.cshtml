@@ -1,0 +1,25 @@
+﻿@model ManagementSoftware.Models.StockSummary
+@{
+    ViewData["Title"] = "Create Stock Summary";
+}
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="@ViewContext.RouteData.Values["action"]">
+    <div class="mb-3">
+        <label asp-for="ItemName" class="form-label"></label>
+        <input asp-for="ItemName" class="form-control" />
+        <span asp-validation-for="ItemName" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="TotalIn" class="form-label"></label>
+        <input asp-for="TotalIn" class="form-control" />
+        <span asp-validation-for="TotalIn" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="TotalOut" class="form-label"></label>
+        <input asp-for="TotalOut" class="form-control" />
+        <span asp-validation-for="TotalOut" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+    <a asp-action="StockSummaryIndex" class="btn btn-secondary">Cancel</a>
+</form>

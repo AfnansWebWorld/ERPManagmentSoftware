@@ -1,0 +1,20 @@
+﻿@model PhysicalStock
+@{
+    ViewData["Title"] = "Physical Stock Details";
+}
+
+<h2 class="mb-4">Stock Details</h2>
+
+<div class="card p-4 shadow-sm bg-light">
+    <dl class="row">
+        <dt class="col-sm-3">Item Name</dt>
+        <dd class="col-sm-9">@Model.ItemName</dd>
+
+        <dt class="col-sm-3">Quantity</dt>
+        <dd class="col-sm-9">@Model.Quantity</dd>
+
+        <dt class="col-sm-3">Date</dt>
+        <dd class="col-sm-9">@Model.Date.ToShortDateString()</dd>
+    </dl>
+    <a asp-action="PhysicalStock" class="btn btn-secondary">Back to List</a>
+</div>

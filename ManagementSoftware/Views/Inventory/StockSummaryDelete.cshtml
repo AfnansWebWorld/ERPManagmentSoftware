@@ -1,0 +1,13 @@
+﻿@model ManagementSoftware.Models.StockSummary
+<h2>Delete Stock Summary</h2>
+<h5>Are you sure you want to delete this?</h5>
+
+<table class="table table-bordered">
+    <tr><th>Item Name</th><td>@Model.ItemName</td></tr>
+</table>
+
+<form asp-action="StockSummaryDelete">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="StockSummaryIndex" class="btn btn-secondary">Cancel</a>
+</form>

@@ -1,0 +1,17 @@
+﻿@model ManagementSoftware.Models.Ledger
+@{
+    ViewData["Title"] = "Delete Ledger Entry";
+}
+<h2>@ViewData["Title"]</h2>
+<h3>Are you sure you want to delete this entry?</h3>
+<div>
+    <h4>@Model.AccountName</h4>
+    <p>Date: @Model.Date.ToShortDateString()</p>
+    <p>Debit: @Model.Debit</p>
+    <p>Credit: @Model.Credit</p>
+</div>
+<form asp-action="DeleteLedger">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

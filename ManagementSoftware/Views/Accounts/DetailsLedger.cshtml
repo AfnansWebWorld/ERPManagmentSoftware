@@ -1,0 +1,15 @@
+﻿@model ManagementSoftware.Models.Ledger
+@{
+    ViewData["Title"] = "Ledger Details";
+}
+<h2>@ViewData["Title"]</h2>
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">@Model.AccountName</h5>
+        <p class="card-text"><strong>Date:</strong> @Model.Date.ToShortDateString()</p>
+        <p class="card-text"><strong>Debit:</strong> @Model.Debit</p>
+        <p class="card-text"><strong>Credit:</strong> @Model.Credit</p>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-info">Edit</a>
+        <a asp-action="Index" class="btn btn-secondary">Back</a>
+    </div>
+</div>

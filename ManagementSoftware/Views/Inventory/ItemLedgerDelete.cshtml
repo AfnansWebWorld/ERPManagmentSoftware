@@ -1,0 +1,14 @@
+﻿@model ManagementSoftware.Models.ItemLedger
+<h2>Delete Item Ledger</h2>
+<h5>Are you sure you want to delete this?</h5>
+
+<table class="table table-bordered">
+    <tr><th>Item Name</th><td>@Model.ItemName</td></tr>
+    <tr><th>Date</th><td>@Model.TransactionDate.ToShortDateString()</td></tr>
+</table>
+
+<form asp-action="ItemLedgerDelete">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="ItemLedger" class="btn btn-secondary">Cancel</a>
+</form>

@@ -1,0 +1,24 @@
+﻿@model ManagementSoftware.Models.SaleReturnInvoice
+@{
+    ViewData["Title"] = "Create Sale Return Invoice";
+}
+
+<div class="container mt-4">
+    <h2>Create Sale Return Invoice</h2>
+    <form asp-action="SaleReturnInvoiceCreate" method="post">
+        <div class="mb-3">
+            <label asp-for="SaleInvoiceId" class="form-label"></label>
+            <input asp-for="SaleInvoiceId" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="ReturnDate" class="form-label"></label>
+            <input asp-for="ReturnDate" type="date" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Reason" class="form-label"></label>
+            <textarea asp-for="Reason" class="form-control"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Save</button>
+        <a asp-action="SaleReturnInvoiceIndex" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

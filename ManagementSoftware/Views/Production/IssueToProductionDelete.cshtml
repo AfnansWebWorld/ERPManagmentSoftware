@@ -1,0 +1,26 @@
+﻿@model ManagementSoftware.Models.IssueToProduction
+@{
+    ViewData["Title"] = "Delete Issue To Production";
+}
+
+<div class="container mt-4">
+    <h2>Delete Issue To Production</h2>
+    <h5>Are you sure you want to delete this record?</h5>
+
+    <dl class="row">
+        <dt class="col-sm-3">Item Name</dt>
+        <dd class="col-sm-9">@Model.ItemName</dd>
+
+        <dt class="col-sm-3">Quantity</dt>
+        <dd class="col-sm-9">@Model.Quantity</dd>
+
+        <dt class="col-sm-3">Issue Date</dt>
+        <dd class="col-sm-9">@Model.IssueDate.ToShortDateString()</dd>
+    </dl>
+
+    <form asp-action="IssueToProductionDelete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="IssueToProduction" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

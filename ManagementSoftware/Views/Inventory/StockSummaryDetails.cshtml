@@ -1,0 +1,9 @@
+﻿@model ManagementSoftware.Models.StockSummary
+<h2>Stock Summary Details</h2>
+<table class="table table-bordered">
+    <tr><th>Item Name</th><td>@Model.ItemName</td></tr>
+    <tr><th>Total In</th><td>@Model.TotalIn</td></tr>
+    <tr><th>Total Out</th><td>@Model.TotalOut</td></tr>
+    <tr><th>Balance</th><td>@Model.Balance</td></tr>
+</table>
+<a asp-action="StockSummaryIndex" class="btn btn-secondary">Back</a>

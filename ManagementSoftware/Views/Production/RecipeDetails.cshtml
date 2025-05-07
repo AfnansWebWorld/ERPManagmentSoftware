@@ -1,0 +1,19 @@
+﻿@model ManagementSoftware.Models.Recipe
+@{
+    ViewData["Title"] = "Recipe Details";
+}
+
+<div class="container mt-4">
+    <h2>Details</h2>
+    <dl class="row">
+        <dt class="col-sm-3">Product Name</dt>
+        <dd class="col-sm-9">@Model.ProductName</dd>
+
+        <dt class="col-sm-3">Ingredient</dt>
+        <dd class="col-sm-9">@Model.Ingredient</dd>
+
+        <dt class="col-sm-3">Quantity</dt>
+        <dd class="col-sm-9">@Model.Quantity</dd>
+    </dl>
+    <a asp-action="Recipe" class="btn btn-secondary">Back</a>
+</div>

@@ -1,0 +1,25 @@
+﻿@model ManagementSoftware.Models.AgingReport
+@{
+    ViewData["Title"] = "Edit Aging Report";
+}
+<h2>@ViewData["Title"]</h2>
+<form asp-action="EditAgingReport" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label asp-for="ClientName"></label>
+        <input asp-for="ClientName" class="form-control" />
+        <span asp-validation-for="ClientName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="OutstandingAmount"></label>
+        <input asp-for="OutstandingAmount" class="form-control" />
+        <span asp-validation-for="OutstandingAmount" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DaysDue"></label>
+        <input asp-for="DaysDue" class="form-control" />
+        <span asp-validation-for="DaysDue" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a asp-action="AgingReports" class="btn btn-secondary">Cancel</a>
+</form>

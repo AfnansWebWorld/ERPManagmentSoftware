@@ -1,0 +1,19 @@
+﻿@model ManagementSoftware.Models.SaleReturnInvoice
+@{
+    ViewData["Title"] = "Sale Return Invoice Details";
+}
+
+<div class="container mt-4">
+    <h2>Details</h2>
+    <dl class="row">
+        <dt class="col-sm-3">Sale Invoice ID</dt>
+        <dd class="col-sm-9">@Model.SaleInvoiceId</dd>
+
+        <dt class="col-sm-3">Return Date</dt>
+        <dd class="col-sm-9">@Model.ReturnDate.ToShortDateString()</dd>
+
+        <dt class="col-sm-3">Reason</dt>
+        <dd class="col-sm-9">@Model.Reason</dd>
+    </dl>
+    <a class="btn btn-secondary" asp-action="SaleReturnInvoice">Back</a>
+</div>

@@ -1,0 +1,25 @@
+﻿@model ManagementSoftware.Models.SaleInvoice
+
+@{
+    ViewData["Title"] = "Edit Sale Invoice";
+}
+
+<h2>Edit Sale Invoice</h2>
+
+<form asp-action="SaleInvoiceEdit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="mb-3">
+        <label asp-for="ClientName" class="form-label"></label>
+        <input asp-for="ClientName" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="InvoiceDate" class="form-label"></label>
+        <input asp-for="InvoiceDate" type="date" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="TotalAmount" class="form-label"></label>
+        <input asp-for="TotalAmount" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a asp-action="SaleInvoiceIndex" class="btn btn-secondary">Cancel</a>
+</form>

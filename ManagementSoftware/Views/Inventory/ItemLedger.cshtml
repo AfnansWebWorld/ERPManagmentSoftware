@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ManagementSoftware.Models.ItemLedger>
+@{
+    ViewData["Title"] = "Item Ledger";
+}
+
+<p>
+<a class="btn btn-primary mb-3" asp-action="ItemLedgerCreate">+ Add New Entry</a>
+<a href="/Export/ItemLedgerToExcel" class="btn btn-outline-secondary">Export to Excel</a>
+</p>
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Item Name</th>
+            <th>Transaction Date</th>
+            <th>Quantity</th>
+            <th>Transaction Type</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ItemName</td>
+                <td>@item.TransactionDate.ToShortDateString()</td>
+                <td>@item.Quantity</td>
+                <td>@item.TransactionType</td>
+                <td>
+                    <a class="btn btn-sm btn-info" asp-action="ItemLedgerDetails" asp-route-id="@item.Id">Details</a>
+                    <a class="btn btn-sm btn-warning" asp-action="ItemLedgerEdit" asp-route-id="@item.Id">Edit</a>
+                    <a class="btn btn-sm btn-danger" asp-action="ItemLedgerDelete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

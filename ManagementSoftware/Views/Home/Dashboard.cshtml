@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+ <div class="col py-4">
+            <h2 class="text-center fw-bold mb-5">📊 ERP Dashboard</h2>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="card shadow-sm text-center">
+                        <div class="card-body">
+                            <i class="bi bi-currency-dollar text-primary" style="font-size: 2rem;"></i>
+                            <h6 class="fw-semibold mt-2">Total Sales</h6>
+                            <h4 class="text-success">@ViewBag.TotalSales</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card shadow-sm text-center">
+                        <div class="card-body">
+                            <i class="bi bi-hourglass-split text-warning" style="font-size: 2rem;"></i>
+                            <h6 class="fw-semibold mt-2">Pending Orders</h6>
+                            <h4 class="text-warning">@ViewBag.PendingOrders</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card shadow-sm text-center">
+                        <div class="card-body">
+                            <i class="bi bi-box-seam text-info" style="font-size: 2rem;"></i>
+                            <h6 class="fw-semibold mt-2">Total Stock</h6>
+                            <h4 class="text-info">@ViewBag.TotalStock</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card shadow-sm text-center">
+                        <div class="card-body">
+                            <i class="bi bi-tools text-danger" style="font-size: 2rem;"></i>
+                            <h6 class="fw-semibold mt-2">Production Orders</h6>
+                            <h4 class="text-danger">@ViewBag.ProductionOrders</h4>
+                        </div>
+                    </div>
+                </div>

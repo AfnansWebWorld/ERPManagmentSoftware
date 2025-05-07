@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ManagementSoftware.Models.StockSummary>
+
+@{
+    ViewData["Title"] = "Stock Summary";
+}
+<a class="btn btn-primary mb-3" asp-action="StockSummaryCreate">+ Add New Stock</a>
+<a href="/Export/StockSummaryToExcel" class="btn btn-outline-secondary">Export to Excel</a>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Item Name</th>
+            <th>Total In</th>
+            <th>Total Out</th>
+            <th>Balance</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var stock in Model)
+        {
+            <tr>
+                <td>@stock.ItemName</td>
+                <td>@stock.TotalIn</td>
+                <td>@stock.TotalOut</td>
+                <td>@stock.Balance</td>
+                <td>
+                    <a class="btn btn-sm btn-info" asp-action="StockSummaryDetails" asp-route-id="@stock.Id">Details</a>
+                    <a class="btn btn-sm btn-warning" asp-action="StockSummaryEdit" asp-route-id="@stock.Id">Edit</a>
+                    <a class="btn btn-sm btn-danger" asp-action="StockSummaryDelete" asp-route-id="@stock.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

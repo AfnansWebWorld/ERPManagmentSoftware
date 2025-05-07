@@ -1,0 +1,22 @@
+﻿@model ManagementSoftware.Models.ClientOrder
+@{
+    ViewData["Title"] = "Order Details";
+}
+
+<div class="container mt-4">
+    <h2>Client Order Details</h2>
+    <dl class="row">
+        <dt class="col-sm-2">Client Name</dt>
+        <dd class="col-sm-10">@Model.ClientName</dd>
+
+        <dt class="col-sm-2">Order Date</dt>
+        <dd class="col-sm-10">@Model.OrderDate.ToShortDateString()</dd>
+
+        <dt class="col-sm-2">Item Name</dt>
+        <dd class="col-sm-10">@Model.ItemName</dd>
+
+        <dt class="col-sm-2">Quantity</dt>
+        <dd class="col-sm-10">@Model.Quantity</dd>
+    </dl>
+    <a asp-action="ClientOrder" class="btn btn-secondary">Back to List</a>
+</div>

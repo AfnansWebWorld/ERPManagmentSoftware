@@ -1,0 +1,26 @@
+﻿@model ManagementSoftware.Models.SaleReturnInvoice
+@{
+    ViewData["Title"] = "Delete Sale Return Invoice";
+}
+
+<div class="container mt-4">
+    <h2>Delete Confirmation</h2>
+    <div class="alert alert-danger">
+        Are you sure you want to delete this invoice?
+    </div>
+    <form asp-action="SaleReturnInvoiceDelete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <dl class="row">
+            <dt class="col-sm-3">Sale Invoice ID</dt>
+            <dd class="col-sm-9">@Model.SaleInvoiceId</dd>
+
+            <dt class="col-sm-3">Return Date</dt>
+            <dd class="col-sm-9">@Model.ReturnDate.ToShortDateString()</dd>
+
+            <dt class="col-sm-3">Reason</dt>
+            <dd class="col-sm-9">@Model.Reason</dd>
+        </dl>
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="SaleReturnInvoiceIndex" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

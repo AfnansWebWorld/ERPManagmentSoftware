@@ -1,0 +1,19 @@
+﻿@model ManagementSoftware.Models.ProductionOrder
+
+@{
+    ViewData["Title"] = "Production Order Details";
+}
+
+<h2>Order Details</h2>
+
+<div class="form-group">
+    <strong>Product Name:</strong> @Model.ProductName
+</div>
+<div class="form-group">
+    <strong>Order Date:</strong> @Model.OrderDate.ToShortDateString()
+</div>
+<div class="form-group">
+    <strong>Quantity:</strong> @Model.Quantity
+</div>
+
+<a asp-action="ProductionOrder" class="btn btn-secondary">Back to List</a>

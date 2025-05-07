@@ -1,0 +1,9 @@
+﻿@model ManagementSoftware.Models.ItemLedger
+<h2>Item Ledger Details</h2>
+<table class="table table-bordered">
+    <tr><th>Item Name</th><td>@Model.ItemName</td></tr>
+    <tr><th>Date</th><td>@Model.TransactionDate.ToShortDateString()</td></tr>
+    <tr><th>Quantity</th><td>@Model.Quantity</td></tr>
+    <tr><th>Type</th><td>@Model.TransactionType</td></tr>
+</table>
+<a asp-action="ItemLedger" class="btn btn-secondary">Back</a>

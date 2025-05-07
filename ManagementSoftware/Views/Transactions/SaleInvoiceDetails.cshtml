@@ -1,0 +1,19 @@
+﻿@model ManagementSoftware.Models.SaleInvoice
+
+@{
+    ViewData["Title"] = "Invoice Details";
+}
+
+<h2>Sale Invoice Details</h2>
+
+<dl class="row">
+    <dt class="col-sm-3">Client Name</dt>
+    <dd class="col-sm-9">@Model.ClientName</dd>
+    <dt class="col-sm-3">Invoice Date</dt>
+    <dd class="col-sm-9">@Model.InvoiceDate.ToShortDateString()</dd>
+    <dt class="col-sm-3">Total Amount</dt>
+    <dd class="col-sm-9">@Model.TotalAmount</dd>
+</dl>
+
+<a asp-action="SaleInvoiceEdit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+<a asp-action="SaleInvoiceIndex" class="btn btn-secondary">Back to List</a>

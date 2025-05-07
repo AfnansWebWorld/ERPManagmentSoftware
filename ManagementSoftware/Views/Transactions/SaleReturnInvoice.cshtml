@@ -1,0 +1,34 @@
+﻿@model IEnumerable<ManagementSoftware.Models.SaleReturnInvoice>
+@{
+    ViewData["Title"] = "Sale Return Invoices";
+}
+
+<div class="container mt-4">
+    <h2>Sale Return Invoices</h2>
+    <a class="btn btn-primary mb-3" asp-action="SaleReturnInvoiceCreate">Create New</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>SaleInvoiceId</th>
+                <th>ReturnDate</th>
+                <th>Reason</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.SaleInvoiceId</td>
+                    <td>@item.ReturnDate.ToShortDateString()</td>
+                    <td>@item.Reason</td>
+                    <td>
+                        <a class="btn btn-info btn-sm" asp-action="SaleReturnInvoiceDetails" asp-route-id="@item.Id">Details</a>
+                        <a class="btn btn-warning btn-sm" asp-action="SaleReturnInvoiceEdit" asp-route-id="@item.Id">Edit</a>
+                        <a class="btn btn-danger btn-sm" asp-action="SaleReturnInvoiceDelete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

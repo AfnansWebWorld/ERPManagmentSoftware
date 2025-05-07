@@ -1,0 +1,24 @@
+﻿@model DeliveryChallan
+@{
+    ViewData["Title"] = "Edit Delivery Challan";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="DeliveryChallanEdit" method="post" class="mt-4">
+    <input type="hidden" asp-for="Id" />
+    <div class="mb-3">
+        <label asp-for="ClientName" class="form-label"></label>
+        <input asp-for="ClientName" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="DeliveryDate" class="form-label"></label>
+        <input asp-for="DeliveryDate" class="form-control" type="date" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a asp-action="DeliveryChallan" class="btn btn-secondary">Back</a>
+</form>

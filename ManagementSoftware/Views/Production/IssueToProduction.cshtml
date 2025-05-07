@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ManagementSoftware.Models.IssueToProduction>
+@{
+    ViewData["Title"] = "Issue To Production";
+}
+
+<div class="container mt-4">
+    <h2>Issue To Production</h2>
+    <a asp-action="IssueToProductionCreate" class="btn btn-primary mb-3">+ Issue New</a>
+
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Item Name</th>
+                <th>Quantity</th>
+                <th>Issue Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ItemName</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.IssueDate.ToShortDateString()</td>
+                    <td>
+                        <a asp-action="IssueToProductionDetails" asp-route-id="@item.Id" class="btn btn-info btn-sm">Details</a>
+                        <a asp-action="IssueToProductionEdit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Edit</a>
+                        <a asp-action="IssueToProductionDelete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,29 @@
+﻿@model ManagementSoftware.Models.Ledger
+@{
+    ViewData["Title"] = "Create Ledger Entry";
+}
+<h2>@ViewData["Title"]</h2>
+<form asp-action="CreateLedger" method="post">
+    <div class="form-group">
+        <label asp-for="AccountName"></label>
+        <input asp-for="AccountName" class="form-control" />
+        <span asp-validation-for="AccountName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Date"></label>
+        <input asp-for="Date" class="form-control" type="date" />
+        <span asp-validation-for="Date" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Debit"></label>
+        <input asp-for="Debit" class="form-control" />
+        <span asp-validation-for="Debit" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Credit"></label>
+        <input asp-for="Credit" class="form-control" />
+        <span asp-validation-for="Credit" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

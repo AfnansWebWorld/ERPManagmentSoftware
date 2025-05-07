@@ -1,0 +1,16 @@
+﻿@model ManagementSoftware.Models.AgingReport
+@{
+    ViewData["Title"] = "Delete Aging Report";
+}
+<h2>@ViewData["Title"]</h2>
+<h3>Are you sure you want to delete this report?</h3>
+<div>
+    <p><strong>Client:</strong> @Model.ClientName</p>
+    <p><strong>Outstanding Amount:</strong> @Model.OutstandingAmount</p>
+    <p><strong>Days Due:</strong> @Model.DaysDue</p>
+</div>
+<form asp-action="DeleteAgingReport">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="AgingReports" class="btn btn-secondary">Cancel</a>
+</form>

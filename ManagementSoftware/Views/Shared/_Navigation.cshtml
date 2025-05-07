@@ -1,0 +1,149 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+    var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+
+    var isAccountsSection = currentController == "Accounts";
+    var isInventorySection = currentController == "Inventory";
+    var isTransactionsSection = currentController == "Transactions";
+    var isProductionSection = currentController == "Production";
+}
+
+<style>
+    .nav-link.active {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-left: 4px solid #0d6efd;
+        font-weight: bold;
+    }
+
+    .sidebar {
+        overflow-y: auto;
+        max-height: 100vh;
+    }
+</style>
+
+<div class="text-center mb-4">
+    <h5 class="fw-bold mb-0 fs-3">📦 ERP</h5>
+    <small class="fw-bold fs-5 text-white">Management Software</small>
+</div>
+
+<ul class="nav flex-column pt-2">
+    <!-- Dashboard -->
+    <li class="nav-item">
+        <a class="nav-link text-white @(currentAction == "Dashboard" ? "active" : "")" asp-controller="Home" asp-action="Dashboard">
+            <i class="bi bi-speedometer2"></i> Dashboard
+        </a>
+    </li>
+
+    <!-- Accounts Reports -->
+    <li class="nav-item mb-2">
+        <a class="nav-link d-flex justify-content-between align-items-center text-white @(isAccountsSection ? "" : "collapsed")"
+           data-bs-toggle="collapse" href="#accountsMenu" role="button" aria-expanded="@(isAccountsSection.ToString().ToLower())">
+            <span><i class="bi bi-journal-text me-2"></i> Accounts Reports</span>
+            <span class="badge bg-primary rounded-circle">2</span>
+        </a>
+        <div class="collapse @(isAccountsSection ? "show" : "")" id="accountsMenu">
+            <ul class="nav flex-column ps-4">
+                <li class="nav-item">
+                    <a class="nav-link text-white @(currentAction == "Ledger" ? "active" : "")" asp-controller="Accounts" asp-action="Ledger">Ledger</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white @(currentAction == "AgingReports" ? "active" : "")" asp-controller="Accounts" asp-action="AgingReports">Aging Reports</a>
+                </li>
+            </ul>
+        </div>
+    </li>
+
+    <!-- Inventory Reports -->
+    <li class="nav-item mb-2">
+        <a class="nav-link d-flex justify-content-between align-items-center text-white @(isInventorySection ? "" : "collapsed")"
+           data-bs-toggle="collapse" href="#inventoryMenu" role="button" aria-expanded="@(isInventorySection.ToString().ToLower())">
+            <span><i class="bi bi-graph-up me-2"></i> Inventory Reports</span>
+            <span class="badge bg-primary rounded-circle">2</span>
+        </a>
+        <div class="collapse @(isInventorySection ? "show" : "")" id="inventoryMenu">
+            <ul class="nav flex-column ps-4">
+                <li class="nav-item">
+                    <a class="nav-link text-white @(currentAction == "ItemLedger" ? "active" : "")" asp-controller="Inventory" asp-action="ItemLedger">Item Ledger</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white @(currentAction == "StockSummaryIndex" ? "active" : "")" asp-controller="Inventory" asp-action="StockSummaryIndex">Stock Summary Report</a>
+                </li>
+            </ul>
+        </div>
+    </li>
+
+    <!-- Transactions -->
+    <li class="nav-item mb-2">
+        <a class="nav-link d-flex justify-content-between align-items-center text-white @(isTransactionsSection ? "" : "collapsed")"
+           data-bs-toggle="collapse" href="#transactionsMenu" role="button" aria-expanded="@(isTransactionsSection.ToString().ToLower())">
+            <span><i class="bi bi-diagram-3 me-2"></i> Transactions</span>
+            <span class="badge bg-primary rounded-circle">5</span>
+        </a>
+        <div class="collapse @(isTransactionsSection ? "show" : "")" id="transactionsMenu">
+            <ul class="nav flex-column ps-4">
+                <li class="nav-item"><a class="nav-link text-white @(currentAction == "PhysicalStock" ? "active" : "")" asp-controller="Transactions" asp-action="PhysicalStock">Physical Stock</a></li>
+                <li class="nav-item"><a class="nav-link text-white @(currentAction == "DeliveryChallan" ? "active" : "")" asp-controller="Transactions" asp-action="DeliveryChallan">Delivery Challan</a></li>
+                <li class="nav-item"><a class="nav-link text-white @(currentAction == "ClientOrder" ? "active" : "")" asp-controller="Transactions" asp-action="ClientOrder">Client Order</a></li>
+                <li class="nav-item"><a class="nav-link text-white @(currentAction == "SaleInvoice" ? "active" : "")" asp-controller="Transactions" asp-action="SaleInvoice">Sale Invoice</a></li>
+                <li class="nav-item"><a class="nav-link text-white @(currentAction == "SaleReturnInvoice" ? "active" : "")" asp-controller="Transactions" asp-action="SaleReturnInvoice">Sale Return Invoice</a></li>
+            </ul>
+        </div>
+    </li>
+
+    <!-- Production -->
+    <li class="nav-item mb-2">
+        <a class="nav-link d-flex justify-content-between align-items-center text-white @(isProductionSection ? "" : "collapsed")"
+           data-bs-toggle="collapse" href="#productionMenu" role="button" aria-expanded="@(isProductionSection.ToString().ToLower())">
+            <span><i class="bi bi-building-gear me-2"></i> Production</span>
+            <span class="badge bg-primary rounded-circle">4</span>
+        </a>
+        <div class="collapse @(isProductionSection ? "show" : "")" id="productionMenu">
+            <ul class="nav flex-column ps-4">
+                <li class="nav-item"><a class="nav-link text-white @(currentAction == "Recipe" ? "active" : "")" asp-controller="Production" asp-action="Recipe">Recipe</a></li>
+                <li class="nav-item"><a class="nav-link text-white @(currentAction == "ProductionOrder" ? "active" : "")" asp-controller="Production" asp-action="ProductionOrder">Production Order</a></li>
+                <li class="nav-item"><a class="nav-link text-white @(currentAction == "IssueToProduction" ? "active" : "")" asp-controller="Production" asp-action="IssueToProduction">Issue To Production</a></li>
+                <li class="nav-item"><a class="nav-link text-white @(currentAction == "ReceivedFromProduction" ? "active" : "")" asp-controller="Production" asp-action="ReceivedFromProduction">Received From Production</a></li>
+            </ul>
+        </div>
+    </li>
+
+    <hr class="text-white my-3" />
+
+    <!-- User Guide -->
+    <div class="text-center mt-auto">
+        <a href="~/docs/ERP_User_Guide.pdf" class="btn btn-outline-light btn-sm" download>
+            <i class="bi bi-file-earmark-text me-1"></i> Download User Guide
+        </a>
+    </div>
+
+    <div class="text-center text-white-50 small mt-4">
+        <hr class="text-white" />
+        <p class="mb-0">
+            © Software Developed By <a href="https://wa.link/84vjvg" class="text-white text-decoration-underline" target="_blank">M. Afnan Ahmed</a>
+        </p>
+    </div>
+    <hr class="text-white my-3" />
+
+    <div class="text-center">
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <form method="post" asp-area="Identity" asp-page="/Account/Login" id="logoutForm">
+                <button type="submit" class="btn btn-outline-light btn-sm w-100">
+                    <i class="bi bi-box-arrow-right me-1"></i> Logout
+                </button>
+            </form>
+        }
+        else
+        {
+            <a class="btn btn-outline-light btn-sm w-100 mb-2" asp-area="Identity" asp-page="/Account/Login">
+                <i class="bi bi-box-arrow-in-right me-1"></i> Login
+            </a>
+            <a class="btn btn-outline-light btn-sm w-100" asp-area="Identity" asp-page="/Account/Register">
+                <i class="bi bi-person-plus me-1"></i> Register
+            </a>
+        }
+    </div>
+</ul>

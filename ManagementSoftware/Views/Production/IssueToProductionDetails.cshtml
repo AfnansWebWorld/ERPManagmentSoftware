@@ -1,0 +1,22 @@
+﻿@model ManagementSoftware.Models.IssueToProduction
+@{
+    ViewData["Title"] = "Issue Details";
+}
+
+<div class="container mt-4">
+    <h2>Issue To Production - Details</h2>
+
+    <dl class="row">
+        <dt class="col-sm-3">Item Name</dt>
+        <dd class="col-sm-9">@Model.ItemName</dd>
+
+        <dt class="col-sm-3">Quantity</dt>
+        <dd class="col-sm-9">@Model.Quantity</dd>
+
+        <dt class="col-sm-3">Issue Date</dt>
+        <dd class="col-sm-9">@Model.IssueDate.ToShortDateString()</dd>
+    </dl>
+
+    <a asp-action="IssueToProductionEdit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+    <a asp-action="IssueToProduction" class="btn btn-secondary">Back to List</a>
+</div>

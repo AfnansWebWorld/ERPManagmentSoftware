@@ -1,0 +1,25 @@
+﻿@model ManagementSoftware.Models.SaleReturnInvoice
+@{
+    ViewData["Title"] = "Edit Sale Return Invoice";
+}
+
+<div class="container mt-4">
+    <h2>Edit Sale Return Invoice</h2>
+    <form asp-action="SaleReturnInvoiceEdit" method="post">
+        <input type="hidden" asp-for="Id" />
+        <div class="mb-3">
+            <label asp-for="SaleInvoiceId" class="form-label"></label>
+            <input asp-for="SaleInvoiceId" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="ReturnDate" class="form-label"></label>
+            <input asp-for="ReturnDate" type="date" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Reason" class="form-label"></label>
+            <textarea asp-for="Reason" class="form-control"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a asp-action="SaleReturnInvoiceIndex" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

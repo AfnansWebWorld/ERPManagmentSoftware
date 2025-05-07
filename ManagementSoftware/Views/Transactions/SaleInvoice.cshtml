@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ManagementSoftware.Models.SaleInvoice>
+
+@{
+    ViewData["Title"] = "Sale Invoices";
+}
+
+<h2>Sale Invoices</h2>
+
+<a class="btn btn-primary mb-3" asp-action="SaleInvoiceCreate">Create New</a>
+
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Client Name</th>
+            <th>Invoice Date</th>
+            <th>Total Amount</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var invoice in Model)
+        {
+            <tr>
+                <td>@invoice.ClientName</td>
+                <td>@invoice.InvoiceDate.ToShortDateString()</td>
+                <td>@invoice.TotalAmount</td>
+                <td>
+                    <a class="btn btn-info btn-sm" asp-action="SaleInvoiceDetails" asp-route-id="@invoice.Id">Details</a>
+                    <a class="btn btn-warning btn-sm" asp-action="SaleInvoiceEdit" asp-route-id="@invoice.Id">Edit</a>
+                    <a class="btn btn-danger btn-sm" asp-action="SaleInvoiceDelete" asp-route-id="@invoice.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

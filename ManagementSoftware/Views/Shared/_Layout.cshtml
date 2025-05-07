@@ -1,0 +1,89 @@
+﻿@{
+    Layout = null;
+    var isLoginPage = Context.Request.Path.Value.Contains("/Identity/Account/Login");
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Management Software</title>
+    <link rel="icon" type="image/png" href="~/img/iconn.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .main-content {
+            margin-left: 270px;
+            padding: 1rem;
+        }
+        
+
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    @if (!isLoginPage)
+    {
+        <!-- Mobile Toggle Button -->
+        <div class="d-lg-none p-2 bg-dark text-white">
+            <button class="btn btn-outline-light" data-bs-toggle="offcanvas" data-bs-target="#sidebarOffcanvas">
+                <i class="bi bi-list"></i> Menu
+            </button>
+        </div>
+
+        <!-- Mobile Sidebar (Offcanvas) -->
+        <div class="offcanvas offcanvas-start bg-dark text-white p-3" tabindex="-1" id="sidebarOffcanvas" aria-labelledby="sidebarOffcanvasLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="sidebarOffcanvasLabel">📦 ERP</h5>
+                <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                @await Html.PartialAsync("_Navigation")
+            </div>
+        </div>
+
+        <!-- Desktop Sidebar -->
+        <div class="d-none d-lg-block bg-dark text-white vh-100 p-3 sidebar" style="width: 270px;">
+            @await Html.PartialAsync("_Navigation")
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm rounded mb-4">
+                <div class="container-fluid">
+                    <span class="navbar-brand mb-0 h1">@ViewData["Title"]</span>
+                </div>
+            </nav>
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    }
+    else
+    {
+        <!-- Login Page Layout (No sidebar) -->
+        <main role="main" class="container py-4">
+            @RenderBody()
+        </main>
+    }
+
+    @RenderSection("Scripts", required: false)
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

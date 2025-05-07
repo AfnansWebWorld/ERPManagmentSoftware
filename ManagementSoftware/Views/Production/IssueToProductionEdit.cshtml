@@ -1,0 +1,33 @@
+﻿@model ManagementSoftware.Models.IssueToProduction
+@{
+    ViewData["Title"] = "Edit Issue To Production";
+}
+
+<div class="container mt-4">
+    <h2>Edit Issue To Production</h2>
+
+    <form asp-action="IssueToProductionEdit" method="post">
+        <input type="hidden" asp-for="Id" />
+
+        <div class="mb-3">
+            <label asp-for="ItemName" class="form-label"></label>
+            <input asp-for="ItemName" class="form-control" />
+            <span asp-validation-for="ItemName" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Quantity" class="form-label"></label>
+            <input asp-for="Quantity" class="form-control" />
+            <span asp-validation-for="Quantity" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="IssueDate" class="form-label"></label>
+            <input asp-for="IssueDate" type="date" class="form-control" />
+            <span asp-validation-for="IssueDate" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a asp-action="IssueToProduction" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

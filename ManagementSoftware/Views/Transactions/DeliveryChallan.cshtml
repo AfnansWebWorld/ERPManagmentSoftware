@@ -1,0 +1,34 @@
+﻿@model IEnumerable<DeliveryChallan>
+@{
+    ViewData["Title"] = "Delivery Challans";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<a asp-action="DeliveryChallanCreate" class="btn btn-primary mb-3">Create New</a>
+
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Client Name</th>
+            <th>Delivery Date</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var challan in Model)
+        {
+            <tr>
+                <td>@challan.ClientName</td>
+                <td>@challan.DeliveryDate.ToShortDateString()</td>
+                <td>@challan.Description</td>
+                <td>
+                    <a asp-action="DeliveryChallanDetails" asp-route-id="@challan.Id" class="btn btn-info btn-sm">Details</a>
+                    <a asp-action="DeliveryChallanEdit" asp-route-id="@challan.Id" class="btn btn-warning btn-sm">Edit</a>
+                    <a asp-action="DeliveryChallanDelete" asp-route-id="@challan.Id" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
